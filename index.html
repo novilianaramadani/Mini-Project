@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Project Toko Buku</title>
-</head>
-<body>
+
     <script>
         $(document).ready(function(){
-            $.ajak({
+            $.ajax({
                 url:'toko_buku.json',
                 datatype: 'json',
                 succes : function(toko) {
@@ -18,6 +17,25 @@
                 }
             });
         });
+
+        function loadbloc(){
+            $.ajax({
+            url:'toko.json',
+            datatype:'json',
+            succes: function (toko){
+                var table = '<table><tr><th>Judul Buku</th><th>Katgori</th><th>Tahun Terbit></th></tr>';
+                    $.each(toko.Toko_buku.Koleksi_buku, function(index, book){
+                        table += '<tr><td>' + book.Judul + '</td><td>' + book.Kategori + '</td><td>' + book.Tahun_terbit
+                    });
+
+                    table += '</table>';
+                    $('#koleksi_buku').html(table);
+                }
+            });
+        }
     </script>
+</head>
+<body>
+    
 </body>
 </html>
