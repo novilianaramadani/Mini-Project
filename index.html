@@ -7,9 +7,11 @@
 
     <script>
         $(document).ready(function(){
+            //Mengambil data toko buku
             $.ajax({
                 url:'toko_buku.json',
                 datatype: 'json',
+                //Menampilkan informasi toko buku
                 succes : function(toko) {
                     $('#nama_toko').text(toko.Toko_buku.Nama);
                     $('#alamat_toko').text(toko.Toko_buku.Alamat);
@@ -18,6 +20,7 @@
             });
         });
 
+        //AJAX
         function loadbloc(){
             $.ajax({
             url:'toko.json',
@@ -36,6 +39,11 @@
     </script>
 </head>
 <body>
-    
+    <div id="demo">
+        <h2>Penggunaan AJAX dalam menampilkan data toko buku dan koleksi buku</h2>
+        <button type="button" onclick="loadbloc()">Klik Disini</button>
+
+
+    </div>
 </body>
 </html>
