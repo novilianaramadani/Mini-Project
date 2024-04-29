@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Buku</title>
+</head>
+<body>
+    <div id="info-toko"></div>"
+    <div id="koleksi-buku"></div>
+
+    <script>
+        function loadJSON(callback) {
+            var xhr = new XMLHttpRequest();
+            chr.overrideMimeType("application/json");
+            xhr.open('GET', 'toko_buku.json', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status == "200") {
+                    callback(xhr.responseText);
+                }
+            };
+            xhr.send(null);
+        }
+
+            loadJSON(function (response) {
+                var data = JSON.parse(response);
+                var toko = data.toko_buku;
+
+                var infoToko = document.getElementById('info-toko');
+                infoToko.innerHTML = `
+                <h1>${toko.nama}</h1>
+                <p><strong>Alamat:</strong> ${toko.alamat}</p>
+                `;
+
+                var koleksiBuku = document.getElementById('koleksi-buku');
+                var tabelHTML = '<h2>Koleksi Buku</h2><table><tr><th>Judul</th><th>Pengarang</th><th>Tahun Terbit</th></tr>';
+                toko.koleksi_buku.forEach(function (buku) {
+                    tabelHTML += `<tr><td>${buku.judul}</td><td>${buku.pengarang}</td><td>${buku.tahun_terbit}</td></tr>`;
+                });
+            tabelHTML += '</table>';
+            koleksiBuku.innerHTML = tabelHTML;
+        });
+    </script>
+</body>
+</html>
