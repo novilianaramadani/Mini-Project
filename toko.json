@@ -1,7 +1,7 @@
 {
-    "toko_buku": {
+    "Toko_buku": {
       "Nama": "Gramedia",
-      "alamat": "Jl. Gatot Subroto",
+      "Alamat": "Jl. Gatot Subroto",
       "Pengarang": "Rintik Sedu",
       "Koleksi_buku": [
         {
