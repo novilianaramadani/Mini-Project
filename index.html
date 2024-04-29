@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Project Toko Buku</title>
-
-    <script>
-        $(document).ready(function(){
-            //Mengambil data toko buku
-            $.ajax({
-                url:'toko_buku.json',
-                datatype: 'json',
-                //Menampilkan informasi toko buku
-                succes : function(toko) {
-                    $('#nama_toko').text(toko.Toko_buku.Nama);
-                    $('#alamat_toko').text(toko.Toko_buku.Alamat);
-                    $('#pengarang_buku').text(toko.Toko_buku.Pengarang);
-                }
-            });
-        });
-
-        //AJAX
-        function loadbloc(){
-            $.ajax({
-            url:'toko.json',
-            datatype:'json',
-            succes: function (toko){
-                var table = '<table><tr><th>Judul Buku</th><th>Katgori</th><th>Tahun Terbit></th></tr>';
-                    $.each(toko.Toko_buku.Koleksi_buku, function(index, book){
-                        table += '<tr><td>' + book.Judul + '</td><td>' + book.Kategori + '</td><td>' + book.Tahun_terbit
-                    });
-
-                    table += '</table>';
-                    $('#koleksi_buku').html(table);
-                }
-            });
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Project Toko Buku</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    // Mengambil data toko
+    $.ajax({
+        url: 'toko.json',
+        dataType: 'json',
+        success: function(toko){
+            // Menampilkan informasi toko buku
+            $('#nama_toko').text(toko.toko_buku.nama);
+            $('#alamat_toko').text(toko.toko_buku.alamat);
+            $('#pengarang_toko').text(toko.toko_buku.pengarang);
         }
-    </script>
+    });
+});
+
+function loadbloc() {
+    // Mengambil data toko untu dimasukkan ke tabel
+    $.ajax({
+        url: 'toko.json',
+        dataType: 'json',
+        success: function(toko){
+            var table = '<table><tr><th>Judul Buku</th><th>Kategori</th><th>Tahun Terbit</th></tr>';
+            $.each(toko.toko_buku.koleksi_buku, function(index, book){
+                table += '<tr><td>' + book.judul + '</td><td>' + book.kategori + '</td><td>' + book.tahun + '</td></tr>';
+            });
+            table += '</table>';
+            $('#koleksi_buku').html(table);
+        }
+    });
+}
+</script>
+
 </head>
 <body>
-    <div id="demo">
+    <div id="bloc">
         <h2>Penggunaan AJAX dalam menampilkan data toko buku dan koleksi buku</h2>
         <button type="button" onclick="loadbloc()">Klik Disini</button>
+    </div>
 
+    <div>
+        <!--  -->
+        <h2>Informasi Toko Buku</h2>
+        <div>Nama Toko: <span id="nama_toko"></span></div>
+        <div>Alamat Toko: <span id="alamat_toko"></span></div>
+        <div>Pengarang: <span id="pengarang_toko"></span></div>
+    </div>
 
+    <div id="koleksi_buku">
+        <!--  -->
     </div>
 </body>
 </html>
