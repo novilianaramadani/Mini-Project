@@ -1,0 +1,25 @@
+{
+    "toko_buku": {
+      "Nama": "Gramedia",
+      "alamat": "Jl. Gatot Subroto",
+      "Pengarang": "Rintik Sedu",
+      "Koleksi_buku": [
+        {
+          "Judul": "Masih Ingatkah Kau Jalan Pulang",
+          "Kategori": "Fiksi",
+          "Tahun_terbit": 2020
+        },
+        {
+          "Judul": "Buku Minta DIbanting",
+          "Kategori": "Fiksi",
+          "Tahun_terbit": 2020
+        },
+        {
+          "Judul": "Kata",
+          "Kategori": "Fiksi",
+          "Tahun_terbit": 2018
+        }
+      ]
+    }
+  }
+  
